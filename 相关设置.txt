@@ -1,0 +1,13 @@
+//插件 
+
+minapp,
+
+wechat-snippet, 
+
+easy-less : 到setting -> json （右上角有按钮）方式中添加
+ "less.compile": {
+        "outExt": ".wxss"
+    }
+
+//图标
+https://www.iconfont.cn/

@@ -1,4 +1,16 @@
-<view>
-    首页
-    <text class="iconfont icon-icon_shouchangz_m"></text>
+<view class="pyg_index">
+    <!-- 搜索框 -->
+    <SearchInput></SearchInput>
+    <!-- 轮播图 -->
+    <view class="index_swiper">
+        <!-- swiper默认尺寸 100% * 150px
+        image默认尺寸 320px * 240px -->
+        <swiper autoplay indicator-dots circular>
+            <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+                <navigator>
+                    <image class="" src="{{item.image_src}}" mode="widthFix"></image>
+                </navigator>
+            </swiper-item>
+        </swiper>
+    </view>
 </view>
