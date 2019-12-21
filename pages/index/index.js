@@ -1,7 +1,12 @@
 import { request } from "../../request/index.js";
 Page({
   data: {
-    swiperList: []
+    //轮播图数组
+    swiperList: [],
+    //导航数组
+    catesList: [],
+    //楼层数据
+    floorList: []
 
   },
   //options(Object)
@@ -16,7 +21,13 @@ Page({
     //   fail: () => { },
     //   complete: () => { }
     // });
+    this.getSwiperList();
+    this.getCateList();
+    this.getFloorList();
 
+  },
+  //获取轮播图数据
+  getSwiperList() {
     request({ url: "https://api.zbztb.cn/api/public/v1/home/swiperdata" })
       .then(result => {
         this.setData({
@@ -24,8 +35,24 @@ Page({
         })
       })
   },
-  //item(index,pagePath,text)
-  onTabItemTap: function (item) {
 
-  }
+  //获取导航数据
+  getCateList() {
+    request({ url: "https://api.zbztb.cn/api/public/v1/home/catitems" })
+      .then(result => {
+        this.setData({
+          catesList: result.data.message
+        })
+      })
+  },
+
+  //获取楼层数据
+  getFloorList() {
+    request({ url: "https://api.zbztb.cn/api/public/v1/home/floordata" })
+      .then(result => {
+        this.setData({
+          floorList: result.data.message
+        })
+      })
+  },
 });
