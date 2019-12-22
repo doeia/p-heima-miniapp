@@ -11,3 +11,7 @@ easy-less : 到setting -> json （右上角有按钮）方式中添加
 
 //图标
 https://www.iconfont.cn/
+
+//使用es7
+https://raw.githubusercontent.com/facebook/regenerator/master/packages/regenerator-runtime/runtime.js
+复制到 lib->runtime->runtime
