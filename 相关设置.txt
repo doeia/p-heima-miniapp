@@ -1,3 +1,6 @@
+//资源API
+https://www.showdoc.cc/128719739414963
+
 //插件 
 
 minapp,
