@@ -52,6 +52,7 @@ Page({
     if (index === -1) {
       // 4. 不存在 添加一个新元素 带上属性num
       this.GoodsInfo.num = 1;
+      this.GoodsInfo.checked = true;
       cart.push(this.GoodsInfo)
     } else {
       // 5. 如果已经存在 数量++ 重新把购物车数组
