@@ -1,4 +1,14 @@
 <view>
-    首页
-    <text class="iconfont icon-icon_shouchangz_m"></text>
+    <view class="" hover-class="none" hover-stop-propagation="false">
+        首页
+        <text class="iconfont icon-icon_shouchangz_m"></text>
+    </view>
+    <view class="" hover-class="none" hover-stop-propagation="false">
+        <Tabs tabs='{{tabs}}' bind:itemChange="handleItemChange">
+            <block wx:if="{{tabs[0].isActive}}">0</block>
+            <block wx:elif="{{tabs[1].isActive}}">1</block>
+            <block wx:elif="{{tabs[2].isActive}}">2</block>
+            <block wx:else>3</block>
+        </Tabs>
+    </view>
 </view>
