@@ -85,6 +85,7 @@ Page({
       await showToast({ title: "支付成功" })
       // 8 手动删除缓存中 已经支付的商品
       let newCart = wx.getStorageSync("cart");
+      //过滤掉已被选中的
       newCart = newCart.filter(v => !v.checked);
       wx.setStorageSync("cart", newCart);
 

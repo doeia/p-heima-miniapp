@@ -42,12 +42,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  //接受传参
   onLoad: function (options) {
+    //传给发送参数
     this.QueryParams.cid = options.cid;
     this.getGoodsList()
   },
 
   async getGoodsList() {
+    //利用接受的参数，发送请求，获取数据
     const res = await request({ url: '/goods/search', data: this.QueryParams });
     const total = res.total;
     //计算总页数
@@ -70,6 +73,7 @@ Page({
   },
 
   onReachBottom() {
+    // 判断还有没有下一页
     if (this.QueryParams.pagenum >= this.totalPages) {
       wx.showToast({
         title: '到底了',

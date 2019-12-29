@@ -90,6 +90,7 @@ Page({
     this.setData({
       currentIndex: index,
       rightContent,
+      //切换分类时返回到顶部
       scrollTop: 0
     })
 

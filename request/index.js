@@ -8,7 +8,8 @@ export const request = (params) => {
         header["Authorizetion"] = wx.getStorageSync("token");
     }
 
-
+    //等待加载蒙版
+    //请求多个时，每个请求累加
     ajaxTimes++;
     wx.showLoading({
         title: '加载中',
@@ -28,6 +29,7 @@ export const request = (params) => {
                 reject(err);
             },
             complete: () => {
+                //请求多个时，每完成一个请求就减去一个
                 ajaxTimes--;
                 if (ajaxTimes === 0) {
                     wx.hideLoading()

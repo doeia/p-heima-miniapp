@@ -36,7 +36,7 @@ Page({
       //1 获取权限状态
       const res1 = await getSetting();
       const scopeAddress = res1.authSetting["scope.address"]
-      //2 判断权限状态
+      //2 判断权限状态 从新获取权限
       if (scopeAddress === false) {
         await openSetting();
       }

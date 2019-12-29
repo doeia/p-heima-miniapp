@@ -8,8 +8,8 @@
 <view class="goods_price">￥{{goodsObj.goods_price}}</view>
 <view class="goods_name_row">
     <view class="goods_name">{{goodsObj.goods_name}}</view>
-    <view class="goods_collect">
-        <text class="iconfont icon-ICON_shouchang_x"></text>
+    <view class="goods_collect" bind:tap="handleCollect">
+        <text class="iconfont {{isCollect?'icon-icon_shouchangz_m':'icon-ICON_shouchang_x'}}"></text>
         <view class="collect_text">收藏</view>
     </view>
 </view>
@@ -30,6 +30,7 @@
         <view>分享</view>
         <button open-type="share"></button>
     </view>
+    <!-- 跳转到的页面不能是tabbar页面 所以open-type 是switchTab -->
     <navigator open-type="switchTab" url="/pages/cart/index" class="tool_item">
         <view class="iconfont icon-gou_wu_che2"></view>
         <view>购物车</view>
