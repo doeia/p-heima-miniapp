@@ -45,7 +45,8 @@ Page({
   //接受传参
   onLoad: function (options) {
     //传给发送参数
-    this.QueryParams.cid = options.cid;
+    this.QueryParams.cid = options.cid || "";
+    this.QueryParams.query = options.query || "";
     this.getGoodsList()
   },
 
