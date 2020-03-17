@@ -1,48 +1,59 @@
-.index_swiper{
-    swiper{
+.index_swiper {
+    swiper {
         width: 750rpx;
         height: 340rpx;
-        image{
+
+        image {
             width: 100%;
         }
     }
 }
 
-.index_cate{
+.index_cate {
     display: flex;
-    navigator{
+
+    navigator {
         padding: 20rpx;
-        flex:1;
-        image{
+        flex: 1;
+
+        image {
             width: 100%;
         }
     }
 }
 
-.index_floor{
-    .floor_group{
-        .floor_title{
+.index_floor {
+    .floor_group {
+        .floor_title {
             padding: 10rpx 0;
-            image{
+
+            image {
                 widows: 100%;
             }
         }
     }
-    .floor_list{
+
+    .floor_list {
         overflow: hidden;
-        navigator{
+
+        navigator {
             float: left;
             width: 33.33%;
+
             // 后四个超链接
-            &:nth-last-child(-n+4){
+            &:nth-last-child(-n+4) {
+                //参照长图片的高度
+                //232/386 = 33.33vw / height
                 height: 33.33vw *386/232/2;
                 border-left: 10rpx solid #fff;
             }
+
             &:nth-child(2),
-            &:nth-child(3){
+            &:nth-child(3) {
                 border-bottom: 10rpx solid #fff;
             }
-            image{
+
+            image {
                 width: 100%;
                 height: 100%;
             }
