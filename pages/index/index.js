@@ -17,7 +17,7 @@ Page({
     //   complete: () => { }
     // });
 
-    request({ url: "https://api.zbztb.cn/api/public/v1/home/swiperdata" })
+       request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata" })
       .then(result => {
         this.setData({
           swiperList: result.data.message
