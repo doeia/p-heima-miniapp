@@ -9,7 +9,7 @@
         </scroll-view>
         <!-- 右侧 -->
         <scroll-view scroll-y scroll-top="{{scroolTop}}" class="right_content">
-            <view class="goods_group" wx:for="{{rightContent}}" wx:for-index="index1" wx:for-item="item1">
+            <view class="goods_group" wx:for="{{rightContent}}" wx:key="cat_id" wx:for-index="index1" wx:for-item="item1">
                 <view class="goods_title">
                     <text class="delimiter">/</text>
                     <text class="title">{{item1.cat_name}}</text>
