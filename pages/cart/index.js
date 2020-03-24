@@ -1,9 +1,14 @@
 // pages/cart/index.js
-import { getSetting, chooseAddress, openSetting, showModal, showToast } from "../../utils/asyncWx.js"
-import regeneratorRuntime from '../../lib/runtime/runtime'
+import {
+  getSetting,
+  chooseAddress,
+  openSetting,
+  showModal,
+  showToast
+} from "../../utils/asyncWx.js";
+import regeneratorRuntime from "../../lib/runtime/runtime";
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -18,11 +23,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {},
 
-  },
-
-  onShow: function () {
+  onShow: function() {
     const address = wx.getStorageSync("address");
     //获取缓存中的购物车数据
     const cart = wx.getStorageSync("cart") || [];
@@ -35,34 +38,36 @@ Page({
     try {
       //1 获取权限状态
       const res1 = await getSetting();
-      const scopeAddress = res1.authSetting["scope.address"]
-      //2 判断权限状态
+      const scopeAddress = res1.authSetting["scope.address"];
+      //2 判断权限状态,如果是false 打开受权
       if (scopeAddress === false) {
         await openSetting();
       }
       const address = await chooseAddress();
-      address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo
+      address.all =
+        address.provinceName +
+        address.cityName +
+        address.countyName +
+        address.detailInfo;
       wx.setStorageSync("address", address);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-
   },
 
   //商品选中
   handleItemChange(e) {
     //1 获取商品id
     const goods_id = e.currentTarget.dataset.id;
-    console.log(goods_id)
+    console.log(goods_id);
     //2 获取购物车数组
     let { cart } = this.data;
     //3 找到被修改的商品对象
     let index = cart.findIndex(v => v.goods_id === goods_id);
     //4 状态取反
-    cart[index].checked = !cart[index].checked
+    cart[index].checked = !cart[index].checked;
 
     this.setCart(cart);
-
   },
 
   //设置购物车状态同时， 重新计算 底部工具栏的数据 全选 总价格 购买数量
@@ -78,11 +83,14 @@ Page({
       } else {
         allChecked = false;
       }
-    })
+    });
+    //空值也是全选，所以判断不是零
     allChecked = cart.length != 0 ? allChecked : false;
     this.setData({
       cart,
-      totalPrice, totalNum, allChecked
+      totalPrice,
+      totalNum,
+      allChecked
     });
     wx.setStorageSync("cart", cart);
   },
@@ -94,7 +102,7 @@ Page({
     //2 修改值
     allChecked = !allChecked;
     //3 循环修改cart数组 中的商品选中状态
-    cart.forEach(v => v.checked = allChecked);
+    cart.forEach(v => (v.checked = allChecked));
     // 4 填充回data或者缓存中
     this.setCart(cart);
   },
@@ -106,7 +114,7 @@ Page({
     let { cart } = this.data;
     // 找到需修改的商品索引
     const index = cart.findIndex(v => v.goods_id === id);
-    // 判断是否要删除
+    // 判断是否要删除，数量为1，再减时
     if (cart[index].num === 1 && operation === -1) {
       const res = await showModal({ content: "您是否要删除？" });
       if (res.confirm) {
@@ -118,15 +126,14 @@ Page({
       // 4 填充回data或者缓存中
       this.setCart(cart);
     }
-
   },
 
   //结算
   async handlePay() {
     const { address, totalNum } = this.data;
     if (!address.userName) {
-      await showToast({ title: "您还没有选择收货地址" })
-      return
+      await showToast({ title: "您还没有选择收货地址" });
+      return;
     }
 
     if (totalNum === 0) {
@@ -135,10 +142,7 @@ Page({
     }
 
     wx.navigateTo({
-      url: '/pages/pay/index'
+      url: "/pages/pay/index"
     });
   }
-
-
-
-})
+});
